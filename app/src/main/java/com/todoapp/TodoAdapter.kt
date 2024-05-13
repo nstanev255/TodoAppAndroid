@@ -4,6 +4,7 @@ import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.todoapp.databinding.ItemTodoBinding
 
@@ -28,6 +29,10 @@ class TodoAdapter (
                 tvTodoTitle.text = currentItem.title
                 checkBox.isChecked = currentItem.isChecked
                 applyStrikeThrough(tvTodoTitle, currentItem.isChecked)
+
+                tvTodoTitle.setOnClickListener {
+                    Navigation.findNavController(todoBinding.root).navigate(R.id.navigateToDetailFragment)
+                }
 
                 checkBox.setOnCheckedChangeListener { _, isChecked ->
                     applyStrikeThrough(tvTodoTitle, isChecked)
