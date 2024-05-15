@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.todoapp.databinding.ItemTodoBinding
+import java.util.Date
 
 class TodoAdapter (
     private val todos: MutableList<Todo>,
@@ -33,6 +34,9 @@ class TodoAdapter (
                 tvTodoTitle.setOnClickListener {
                     Navigation.findNavController(todoBinding.root).navigate(R.id.navigateToDetailFragment)
                 }
+
+                tvDate.text = Date().toInstant().toString()
+                tvStatus.text = "Progress"
 
                 checkBox.setOnCheckedChangeListener { _, isChecked ->
                     applyStrikeThrough(tvTodoTitle, isChecked)

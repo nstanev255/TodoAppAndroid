@@ -22,5 +22,17 @@
         <action
             android:id="@+id/navigateToDetailFragment"
             app:destination="@id/todoDetailFragment" />
+        <action
+            android:id="@+id/action_todoListFragment_to_addNewTodoItemFragment"
+            app:destination="@id/navigateToNewTodoItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigateToNewTodoItem"
+        android:name="com.todoapp.fragment.AddNewTodoItemFragment"
+        android:label="fragment_add_new_todo_item"
+        tools:layout="@layout/fragment_add_new_todo_item" >
+        <action
+            android:id="@+id/action_addNewTodoItemFragment_to_todoListFragment"
+            app:destination="@id/todoListFragment" />
     </fragment>
 </navigation>

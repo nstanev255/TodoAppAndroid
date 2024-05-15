@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.todoapp.R
 import com.todoapp.Todo
 import com.todoapp.TodoAdapter
 import com.todoapp.databinding.TodoListBinding
@@ -39,19 +41,8 @@ class TodoListFragment : Fragment() {
         binding.rvTodoItems.layoutManager = LinearLayoutManager(view.context)
 
         binding.apply {
-
-            btnAddTodo.setOnClickListener {
-                val text = etTodoTitle.text.toString()
-                if(text.isNotEmpty()) {
-                    val todoItem = Todo(text)
-                    todoAdapter.addTodo(todoItem)
-
-                    etTodoTitle.text.clear()
-                }
-            }
-
-            btnDeleteDoneTodos.setOnClickListener {
-                todoAdapter.deleteDoneTodos()
+            fabAddTodo.setOnClickListener {
+                Navigation.findNavController(view).navigate(R.id.navigateToNewTodoItem)
             }
         }
 
